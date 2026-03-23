@@ -1,0 +1,40 @@
+:root {
+  --bg:        #040810;
+  --bg2:       #080f1c;
+  --surface:   #0d1626;
+  --surface2:  #111e33;
+  --blue:      #1e90ff;
+  --blue-dim:  rgba(30,144,255,0.12);
+  --blue-mid:  #0a3d7a;
+  --blue-glow: rgba(30,144,255,0.22);
+  --red:       #e8371a;
+  --red-dim:   rgba(232,55,26,0.15);
+  --gold:      #f5a623;
+  --text:      #e8edf5;
+  --muted:     #6b7fa0;
+  --border:    rgba(30,144,255,0.18);
+  --border-h:  rgba(30,144,255,0.55);
+  --radius:    6px;
+  --font-h:    'Rajdhani', sans-serif;
+  --font-b:    'DM Sans', sans-serif;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-b);
+  font-size: 15px;
+  min-height: 100vh;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: var(--blue-mid); border-radius: 3px; }
+
+::selection { background: var(--blue-glow); color: var(--blue); }
