@@ -205,13 +205,14 @@
 
 .arrow { font-size: 18px; }
 
-.footer {
-  font-size: 13px;
-  color: rgba(107,127,160,0.5);
+.contactLine {
+  font-size: 16px;
+  color: var(--muted);
+  margin-bottom: 24px;
 }
-.footer a {
+.contactLine a {
   color: var(--blue);
   text-decoration: none;
-  opacity: 0.8;
+  font-weight: 600;
 }
-.footer a:hover { opacity: 1; text-decoration: underline; }
+.contactLine a:hover { text-decoration: underline; }

@@ -94,6 +94,11 @@ export default function DownloadGate({ onContinue }) {
         </div>
       </div>
 
+      {/* Consultas */}
+      <p className={styles.contactLine}>
+        Consultas: <a href="mailto:seminario@metro.cl">seminario@metro.cl</a>
+      </p>
+
       {/* Botón de descarga */}
       <motion.button
         className={styles.btnDownload}
@@ -134,9 +139,6 @@ export default function DownloadGate({ onContinue }) {
         Ir al formulario de inscripción <span className={styles.arrow}>→</span>
       </motion.button>
 
-      <p className={styles.footer}>
-        Consultas: <a href="mailto:seminario@metro.cl">seminario@metro.cl</a>
-      </p>
     </motion.div>
   )
 }

@@ -348,6 +348,17 @@
   line-height: 1.7; margin-bottom: 32px;
 }
 .successDesc strong { color: var(--text); }
+.successContact {
+  font-size: 15px;
+  color: var(--muted);
+  margin-bottom: 24px;
+}
+.successContact a {
+  color: var(--blue);
+  font-weight: 600;
+  text-decoration: none;
+}
+.successContact a:hover { text-decoration: underline; }
 .successMeta {
   background: var(--surface);
   border: 1px solid var(--border);

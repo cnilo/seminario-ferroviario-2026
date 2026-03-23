@@ -3,8 +3,8 @@ import { motion, AnimatePresence } from 'framer-motion'
 import styles from './InscripcionForm.module.css'
 
 // ── CONFIGURACIÓN ────────────────────────────────────────────────────────────
-// Reemplaza esta URL con la del trigger de Power Automate una vez guardado el flujo
-const FLOW_URL = 'https://defaultb48ab4ae3a174d36904feb39bc4ead.7c.environment.api.powerplatform.com:443/powerautomate/automations/direct/workflows/3c772c7abf6c4f06bc7dbdd05d4bc51d/triggers/manual/paths/invoke?api-version=1&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=cEQPLB1pDGupX2DsLbRuWEgBqQ7NeHFstbpmeL6wltM'
+const FLOW_URL     = import.meta.env.VITE_FLOW_URL
+const SECRET_TOKEN = import.meta.env.VITE_SECRET_TOKEN
 // ─────────────────────────────────────────────────────────────────────────────
 
 const AREAS = [
@@ -174,6 +174,7 @@ export default function InscripcionForm() {
       ArchivoNombre: `${values.empresa.trim().replace(/[^a-zA-Z0-9áéíóúÁÉÍÓÚñÑ\s]/g, '').replace(/\s+/g, '_')}_Propuesta_Seminario2026.${file?.name.split('.').pop()}`,
       ArchivoBase64: archivoBase64,
       FechaEnvio:    new Date().toISOString(),
+      _token:        SECRET_TOKEN,
     }
 
     try {
@@ -214,6 +215,10 @@ export default function InscripcionForm() {
           Hemos recibido su propuesta para el Seminario de Innovaciones Ferroviarias 2026.<br /><br />
           Nos pondremos en contacto a través de <strong>{values.correo}</strong> antes del{' '}
           <strong>8 de mayo de 2026</strong>.
+        </p>
+        <p className={styles.successContact}>
+          Para consultas escríbanos a{' '}
+          <a href="mailto:seminario@metro.cl">seminario@metro.cl</a>
         </p>
         <div className={styles.successMeta}>
           <div className={styles.successMetaItem}>
