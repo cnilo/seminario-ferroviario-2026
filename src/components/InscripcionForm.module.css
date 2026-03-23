@@ -117,9 +117,9 @@
 .field { display: flex; flex-direction: column; gap: 7px; }
 .label {
   font-family: var(--font-h);
-  font-size: 12px;
+  font-size: 16px;
   font-weight: 600;
-  letter-spacing: 0.8px;
+  letter-spacing: 0.5px;
   text-transform: uppercase;
   color: var(--muted);
 }

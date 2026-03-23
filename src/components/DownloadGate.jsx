@@ -8,7 +8,6 @@ const TEMPLATE_NAME = 'Plantilla-Propuesta-Seminario-Ferroviario-2026.pptx'
 
 export default function DownloadGate({ onContinue }) {
   const [downloaded, setDownloaded] = useState(false)
-  const [pulse, setPulse] = useState(false)
 
   const handleDownload = () => {
     const a = document.createElement('a')
@@ -21,11 +20,6 @@ export default function DownloadGate({ onContinue }) {
   }
 
   const handleContinue = () => {
-    if (!downloaded) {
-      setPulse(true)
-      setTimeout(() => setPulse(false), 600)
-      return
-    }
     onContinue()
   }
 
@@ -132,16 +126,12 @@ export default function DownloadGate({ onContinue }) {
 
       {/* Botón continuar */}
       <motion.button
-        className={`${styles.btnContinue} ${!downloaded ? styles.locked : ''} ${pulse ? styles.pulse : ''}`}
+        className={styles.btnContinue}
         onClick={handleContinue}
-        whileHover={downloaded ? { scale: 1.02 } : {}}
-        whileTap={downloaded ? { scale: 0.98 } : {}}
+        whileHover={{ scale: 1.02 }}
+        whileTap={{ scale: 0.98 }}
       >
-        {downloaded ? (
-          <>Ir al formulario de inscripción <span className={styles.arrow}>→</span></>
-        ) : (
-          <>🔒 Descargue la plantilla para continuar</>
-        )}
+        Ir al formulario de inscripción <span className={styles.arrow}>→</span>
       </motion.button>
 
       <p className={styles.footer}>

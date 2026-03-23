@@ -14,6 +14,7 @@ const AREAS = [
   { value: 'Sistemas Ferroviarios',                    icon: '🚄' },
   { value: 'Mantenimiento',                            icon: '🔧' },
   { value: 'Digitalización e Inteligencia Artificial', icon: '🤖' },
+  { value: 'Otros',                                    icon: '✏️' },
 ]
 
 const PAISES = [
@@ -24,7 +25,7 @@ const PAISES = [
 
 const INITIAL = {
   empresa: '', pais: '', contacto: '', correo: '', telefono: '',
-  area: '', titulo: '', resumen: '', participo: '', calidad: '',
+  area: '', areaOtros: '', titulo: '', resumen: '', participo: '', calidad: '',
 }
 
 function Field({ label, required, error, children }) {
@@ -121,6 +122,7 @@ export default function InscripcionForm() {
                                  e.correo   = 'Ingrese un correo válido.'
     if (!values.telefono.trim()) e.telefono = 'Este campo es obligatorio.'
     if (!values.area)            e.area     = 'Seleccione una categoría.'
+    if (values.area === 'Otros' && !values.areaOtros.trim()) e.areaOtros = 'Especifique el área.'
     if (!values.titulo.trim())   e.titulo   = 'Este campo es obligatorio.'
     if (!values.resumen.trim())  e.resumen  = 'Este campo es obligatorio.'
     if (!file)                   e.archivo  = 'Debe adjuntar su propuesta.'
@@ -164,7 +166,7 @@ export default function InscripcionForm() {
       Contacto:      values.contacto,
       Correo:        values.correo,
       Telefono:      values.telefono,
-      Area:          values.area,
+      Area:          values.area === 'Otros' ? values.areaOtros : values.area,
       Titulo:        values.titulo,
       Resumen:       values.resumen,
       Participo:     values.participo,
@@ -326,11 +328,31 @@ export default function InscripcionForm() {
                 label={a.value}
                 icon={a.icon}
                 checked={values.area === a.value}
-                onChange={() => set('area', a.value)}
+                onChange={() => { set('area', a.value); if (a.value !== 'Otros') set('areaOtros', '') }}
               />
             ))}
           </div>
         </Field>
+        <AnimatePresence>
+          {values.area === 'Otros' && (
+            <motion.div
+              initial={{ opacity: 0, height: 0 }}
+              animate={{ opacity: 1, height: 'auto' }}
+              exit={{ opacity: 0, height: 0 }}
+              transition={{ duration: 0.3 }}
+              style={{ overflow: 'hidden', marginTop: 16 }}
+            >
+              <Field label="Especifique el área" required error={errors.areaOtros}>
+                <input
+                  className={`${styles.input} ${errors.areaOtros ? styles.inputError : ''}`}
+                  value={values.areaOtros}
+                  onChange={e => set('areaOtros', e.target.value)}
+                  placeholder="Describa el área de su solución"
+                />
+              </Field>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </motion.div>
 
       {/* Sección 3 */}
