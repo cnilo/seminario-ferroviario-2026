@@ -101,10 +101,16 @@ export default function InscripcionForm() {
     setTimeout(() => setToast(null), 4500)
   }
 
+  const ALLOWED_MIME = [
+    'application/pdf',
+    'application/vnd.ms-powerpoint',
+    'application/vnd.openxmlformats-officedocument.presentationml.presentation',
+  ]
+
   const setFileVal = (f) => {
     if (!f) return
     const ext = f.name.split('.').pop().toLowerCase()
-    if (!['pdf','ppt','pptx'].includes(ext)) {
+    if (!['pdf','ppt','pptx'].includes(ext) || !ALLOWED_MIME.includes(f.type)) {
       showToast('Solo se aceptan archivos .PDF o .PPTX', 'error')
       return
     }
