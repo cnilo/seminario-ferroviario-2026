@@ -281,7 +281,7 @@ export default function InscripcionForm() {
               className={`${styles.input} ${errors.empresa ? styles.inputError : ''}`}
               value={values.empresa}
               onChange={e => set('empresa', e.target.value)}
-              placeholder="Ej: Siemens Mobility Chile S.A."
+              placeholder="Ej: Metro de Santiago"
             />
           </Field>
           <Field label="País de Origen" required error={errors.pais}>
